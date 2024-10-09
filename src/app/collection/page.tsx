@@ -147,7 +147,7 @@ const Shopping = () => {
           {/* Product 3 */}
           <div className="group relative w-72">
             <Image
-              src="/Bed4.avif"
+              src="/bed4.avif"
               alt="Bed"
               width={288}
               height={192}
