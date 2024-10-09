@@ -2,26 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.navbar_link {
+  position: relative; /* To position the ::after element correctly */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.navbar_link:hover {
+  color: #ff8f9c;
+  transition: all 0.4s;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.navbar_link::after {
+  position: absolute;
+  content: "";
+  background-color: #ff8f9c;
+  height: 3px;
+  width: 100%;
+  bottom: -5px;
+  left: 0;
+  scale: 0;
+  transform-origin: left;
+  transition: all 0.4s;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.navbar_link:hover::after {
+  scale: 1; /* Correct syntax for scaling */
+}
+
+.group:hover img {
+  transform: scale(1.7); /* Increase scale for more zoom */
+  transition: transform 0.5s ease; /* Smooth transition */
 }
