@@ -1,20 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 const Shopping = () => {
-  const [showDetails, setShowDetails] = useState(false); // State to toggle details
+  const [showDetails, setShowDetails] = useState(false);
 
-  const toggleDetails = () => {
-    console.log("Button clicked!"); // Debugging line
-    setShowDetails((prevShowDetails) => !prevShowDetails); // Toggle the visibility of details
-  };
+  // Toggle Details function
+  const toggleDetails = useCallback(() => {
+    setShowDetails((prevShowDetails) => !prevShowDetails);
+  }, []);
+
+  // Function to handle adding products to the basket
+  const handleAddToBasket = useCallback((productName: string) => {
+    alert(`${productName} added to basket!`);
+  }, []);
 
   return (
     <div className="bg-white min-h-screen">
       <h1 className="text-center text-4xl font-bold mt-8">Shopping Page</h1>
-      <p className="text-center text-lg mt-4">Welcome to the Shopping page!</p>
+      <h4 className="text-center text-lg mt-4">Welcome to Shopping page.</h4>
 
       {/* First Section */}
       <div className="flex justify-center items-center mt-12">
@@ -23,8 +28,8 @@ const Shopping = () => {
           <Image
             src="/set.avif"
             alt="Shopping Item"
-            width={1000} // Set the width
-            height={600} // Set the height
+            width={1000}
+            height={600}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
           />
 
@@ -48,10 +53,11 @@ const Shopping = () => {
         <div className="mt-8 p-4 border-t border-gray-300">
           <h2 className="text-2xl font-bold mb-2">More Details</h2>
           <p className="bg-white text-lg">
-            Here are more details about our new collection. We offer a variety of styles and colors to choose from.
-            Whether you're looking for something casual or elegant, we have it all.
-            Check back regularly for updates on new arrivals and special offers!
-          </p>
+  &quot;Here are more details about our new collection. We offer a variety of styles and colors to choose from.
+  Whether you&apos;re looking for something casual or elegant, we have it all.
+  Check back regularly for updates on new arrivals and special offers!&quot;
+</p>
+
         </div>
       )}
 
@@ -67,9 +73,10 @@ const Shopping = () => {
             <Image
               src="/sofa1.avif"
               alt="Living Room"
-              width={288} // Set the width
-              height={192} // Set the height
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
+              onClick={() => handleAddToBasket("Living Room Set")}
             />
             <h3 className="text-lg font-semibold mt-2">Living Room</h3>
           </div>
@@ -79,9 +86,10 @@ const Shopping = () => {
             <Image
               src="/dinign.avif"
               alt="Dining Room"
-              width={288} // Set the width
-              height={192} // Set the height
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
+              onClick={() => handleAddToBasket("Dining Room Set")}
             />
             <h3 className="text-lg font-semibold mt-2">Dining Room</h3>
           </div>
@@ -91,9 +99,10 @@ const Shopping = () => {
             <Image
               src="/bed1.avif"
               alt="Bedroom"
-              width={288} // Set the width
-              height={192} // Set the height
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
+              onClick={() => handleAddToBasket("Bedroom Set")}
             />
             <h3 className="text-lg font-semibold mt-2">Bedroom</h3>
           </div>
@@ -110,12 +119,12 @@ const Shopping = () => {
           {/* Product 1 */}
           <div className="group relative w-72">
             <Image
-              src="/bed2.avif" // Replace with the actual path for Product 1
-              alt="Product 1"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/bed2.avif"
+              alt="Bedroom Set"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 1 added to basket!")} // Simulate adding to basket
+              onClick={() => handleAddToBasket("Bedroom Set")}
             />
             <h3 className="text-lg font-semibold mt-2">Bedroom Set</h3>
             <p className="text-sm mt-1">Price: $50 / €45 / PKR 10,500</p>
@@ -124,12 +133,12 @@ const Shopping = () => {
           {/* Product 2 */}
           <div className="group relative w-72">
             <Image
-              src="/bed3.avif" // Replace with the actual path for Product 2
-              alt="Product 2"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/bed3.avif"
+              alt="Bed"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 2 added to basket!")}
+              onClick={() => handleAddToBasket("Bed")}
             />
             <h3 className="text-lg font-semibold mt-2">Bed</h3>
             <p className="text-sm mt-1">Price: $70 / €65 / PKR 15,500</p>
@@ -138,12 +147,12 @@ const Shopping = () => {
           {/* Product 3 */}
           <div className="group relative w-72">
             <Image
-              src="/Bed4.avif" // Replace with the actual path for Product 3
-              alt="Product 3"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/Bed4.avif"
+              alt="Bed"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 3 added to basket!")}
+              onClick={() => handleAddToBasket("Bed")}
             />
             <h3 className="text-lg font-semibold mt-2">Bed</h3>
             <p className="text-sm mt-1">Price: $60 / €55 / PKR 12,000</p>
@@ -152,172 +161,157 @@ const Shopping = () => {
           {/* Product 4 */}
           <div className="group relative w-72">
             <Image
-              src="/dining.webp" // Replace with the actual path for Product 4
-              alt="Product 4"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/dining.webp"
+              alt="Dining Table"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 4 added to basket!")}
+              onClick={() => handleAddToBasket("Dining Table")}
             />
             <h3 className="text-lg font-semibold mt-2">Dining Table</h3>
             <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
           </div>
 
-          {/* Additional Products */}
+          {/* Product 5 */}
           <div className="group relative w-72">
             <Image
-              src="/dining2.avif" // Replace with the actual path for Product 5
-              alt="Product 5"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/dining2.avif"
+              alt="Dining Table"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 5 added to basket!")}
+              onClick={() => handleAddToBasket("Dining Table")}
             />
             <h3 className="text-lg font-semibold mt-2">Dining Table</h3>
             <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
           </div>
 
+          {/* Product 6 */}
           <div className="group relative w-72">
             <Image
-              src="/diningtable.jpg" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/diningtable.jpg"
+              alt="Dining Table"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
+              onClick={() => handleAddToBasket("Dining Table")}
             />
             <h3 className="text-lg font-semibold mt-2">Dining Table</h3>
             <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
           </div>
+
+          {/* Product 7 */}
           <div className="group relative w-72">
             <Image
-              src="/bed.avif" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/bed.avif"
+              alt="Bed"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
+              onClick={() => handleAddToBasket("Bed")}
             />
             <h3 className="text-lg font-semibold mt-2">Bed</h3>
-            <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
+            <p className="text-sm mt-1">Price: $60 / €55 / PKR 12,000</p>
           </div>
           <div className="group relative w-72">
             <Image
-              src="/bed.webp" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/sofa.webp"
+              alt="Bed"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
-            />
-            <h3 className="text-lg font-semibold mt-2">Bed</h3>
-            <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
-          </div>
-          <div className="group relative w-72">
-            <Image
-              src="/bed1.avif" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={192} // Set the height
-              className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
-            />
-            <h3 className="text-lg font-semibold mt-2">Bed</h3>
-            <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
-          </div>
-          <div className="group relative w-72">
-            <Image
-              src="/sofa2.avif" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={192} // Set the height
-              className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
+              onClick={() => handleAddToBasket("Bed")}
             />
             <h3 className="text-lg font-semibold mt-2">Sofa</h3>
-            <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
+            <p className="text-sm mt-1">Price: $70 / €65 / PKR 15,500</p>
           </div>
           <div className="group relative w-72">
             <Image
-              src="/sofa1.avif" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/sofa1.avif"
+              alt="Bed"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
+              onClick={() => handleAddToBasket("Bed")}
             />
             <h3 className="text-lg font-semibold mt-2">Sofa</h3>
-            <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
+            <p className="text-sm mt-1">Price: $70 / €65 / PKR 15,500</p>
           </div>
           <div className="group relative w-72">
             <Image
-              src="/sofa.webp" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/sofa2.avif"
+              alt="Bed"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
+              onClick={() => handleAddToBasket("Sofa")}
             />
             <h3 className="text-lg font-semibold mt-2">Sofa</h3>
-            <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
+            <p className="text-sm mt-1">Price: $70 / €65 / PKR 15,500</p>
           </div>
           <div className="group relative w-72">
             <Image
-              src="/space.webp" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/space.webp"
+              alt="Bed"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
+              onClick={() => handleAddToBasket("Space")}
             />
-            <h3 className="text-lg font-semibold mt-2">Space table</h3>
-            <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
+            <h3 className="text-lg font-semibold mt-2">SpaceTable</h3>
+            <p className="text-sm mt-1">Price: $70 / €65 / PKR 15,500</p>
           </div>
           <div className="group relative w-72">
             <Image
-              src="/dinign.avif" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={192} // Set the height
+              src="/dinng.webp"
+              alt="Bed"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
+              onClick={() => handleAddToBasket("DiningTable")}
             />
-            <h3 className="text-lg font-semibold mt-2">DiningTable</h3>
-            <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
+            <h3 className="text-lg font-semibold mt-2">Dining-Table</h3>
+            <p className="text-sm mt-1">Price: $70 / €65 / PKR 15,500</p>
           </div>
-          <div>
-          <Image
-              src="/dining.webp" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={192} // Set the height
+          <div className="group relative w-72">
+            <Image
+              src="/dinign.avif"
+              alt="Bed"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
+              onClick={() => handleAddToBasket("DiningTable")}
             />
-            <h3 className="text-lg font-semibold mt-2">DiningTable</h3>
-            <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
+            <h3 className="text-lg font-semibold mt-2">Dining-Table</h3>
+            <p className="text-sm mt-1">Price: $70 / €65 / PKR 15,500</p>
           </div>
-          <div>
-          <Image
-              src="/dresser.jpg" // Replace with the actual path for Product 6
-              alt="Product 6"
-              width={288} // Set the width
-              height={200} // Set the height
+          <div className="group relative w-72">
+            <Image
+              src="/dining2.avif"
+              alt="Bed"
+              width={288}
+              height={192}
               className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
-              onClick={() => alert("Product 6 added to basket!")}
+              onClick={() => handleAddToBasket("DiningTable")}
+            />
+            <h3 className="text-lg font-semibold mt-2">Dining-Table</h3>
+            <p className="text-sm mt-1">Price: $70 / €65 / PKR 15,500</p>
+          </div>
+          <div className="group relative w-72">
+            <Image
+              src="/dresser.jpg"
+              alt="Dresser"
+              width={288}
+              height={192}
+              className="w-full h-48 object-cover rounded-md transition-transform duration-300 group-hover:scale-105"
+              onClick={() => handleAddToBasket("DiningTable")}
             />
             <h3 className="text-lg font-semibold mt-2">Dresser</h3>
-            <p className="text-sm mt-1">Price: $40 / €35 / PKR 8,500</p>
+            <p className="text-sm mt-1">Price: $70 / €65 / PKR 15,500</p>
           </div>
-          
         </div>
-        </div>
-        </div>
-        
-
-     
-
-      
+      </div>
+    </div>
   );
 };
 
