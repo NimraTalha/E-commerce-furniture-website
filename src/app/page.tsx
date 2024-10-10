@@ -16,6 +16,10 @@ export default function Home() {
           From creating large-scale turnkey solutions for corporate clients to providing 
           the perfect armchair for a living room, the company has worked on projects of all sizes.
         </p>
+        {/* Example of using escaped quotes */}
+        <p className="font-light text-yellow-600 mt-4 text-base md:text-lg">
+          It&apos;s a great company!
+        </p>
       </div>
 
       {/* Image Section */}
