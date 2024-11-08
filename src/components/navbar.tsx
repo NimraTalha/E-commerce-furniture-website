@@ -1,8 +1,8 @@
-'use client'; // This makes the component a Client Component
+'use client';
 
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'; // For hamburger menu icons
+import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,8 +34,8 @@ const Navbar = () => {
         <div className='hidden lg:flex justify-center gap-10 text-blackish font-medium'>
           <Link className='navbar_link relative hover:text-yellow-600' href="/">Home</Link>
           <Link className='navbar_link relative hover:text-yellow-600' href="/collection">Shopping</Link>
-          <Link className='navbar_link relative hover:text-yellow-600' href="#">About-us</Link>
-          <Link className='navbar_link relative hover:text-yellow-600' href="#">Contact-us</Link>
+          <Link className='navbar_link relative hover:text-yellow-600' href="/about">About-us</Link>
+          <Link className='navbar_link relative hover:text-yellow-600' href="/contact">Contact-us</Link>
         </div>
       </div>
 
@@ -45,8 +45,8 @@ const Navbar = () => {
           <div className='flex flex-col gap-4 text-center text-blackish font-medium'>
             <Link className='hover:text-yellow-600' href="/">Home</Link>
             <Link className='hover:text-yellow-600' href="/collection">Shopping</Link>
-            <Link className='hover:text-yellow-600' href="#">About-us</Link>
-            <Link className='hover:text-yellow-600' href="#">Contact-us</Link>
+            <Link className='hover:text-yellow-600' href="/about">About-us</Link>
+            <Link className='hover:text-yellow-600' href="/contact">Contact-us</Link>
           </div>
         </div>
       )}
